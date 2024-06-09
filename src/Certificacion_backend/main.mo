@@ -11,7 +11,14 @@ actor CarroList {
     speed : Nat;
   };
 
-  var carros : [Carro] = [];
+  var carros : [Carro] = [
+    {
+      id = 1;
+      name = "Delorean";
+      description = "Automovil que se utiliza en la trilogía de Volver al Futuro";
+      speed = 180;
+    }
+  ];
 
   public func addCarro(speed : Nat, description : Text, name : Text) : async Bool {
     let newid = Array.size(carros) + 1;
