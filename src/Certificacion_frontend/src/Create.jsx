@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Form, Button, Container, Row, Card, Col } from 'react-bootstrap';
+import { Form, Button, Container, Row, Card, Col, } from 'react-bootstrap';
 import Swal from 'sweetalert2';
-import { Certificacion_backend } from 'declarations/Ceryificacion_backend';
+import { Certificacion_backend } from 'declarations/Certificacion_backend';
 import { useNavigate } from 'react-router-dom';
 
 

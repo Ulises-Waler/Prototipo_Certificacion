@@ -7,7 +7,7 @@ import {
 import App from './App';
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Create from './Create'
 
 const router = createBrowserRouter([
   {
