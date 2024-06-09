@@ -1,0 +1,7 @@
+.fondo {
+    background-image: url(src/XDDD/Img/Carro1.jpg);
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }

@@ -5,6 +5,10 @@ import { } from 'react-bootstrap/esm/PageItem'
 import Backtothefuture from "./XDDD/Img/Backtothefuture-1.webp";
 
 
+
+
+
+
 function App() {
   const [Carros, setCarros] = useState([]);
 
@@ -15,18 +19,19 @@ function App() {
   function getCarros() {
     Certificacion_backend.getAllCarros().then(carros => {
       setCarros(carros);
-    }); }
+    });
+  }
 
 
   return (
-    <Container className='m-4'>
+    <center><Container className='m-4'>
       <Row>
         <Card>
           <Card.Body>
-            <Card.Title>Listado de Carros</Card.Title>
+            <Card.Title>Auto Más Popular</Card.Title>
+            <Image src={Backtothefuture} fluid />
             <Table>
               <thead>
-                <img src={Backtothefuture}/>
                 <tr>
                   <th>ID</th>
                   <th>Nombre</th>
@@ -53,7 +58,7 @@ function App() {
           </Card.Body>
         </Card>
       </Row>
-    </Container>
+    </Container></center>
   );
 }
 

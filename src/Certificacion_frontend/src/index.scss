@@ -3,6 +3,12 @@ body {
   font-size: 1.5rem;
 }
 
+#principal {
+  min-height: 100vh;
+  background: url(./XDDD/Img/Carro1.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
 img {
   max-width: 50vw;
   max-height: 25vw;
