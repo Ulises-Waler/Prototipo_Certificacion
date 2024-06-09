@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Certificacion_backend } from 'declarations/Certificacion_backend';
-import { Container, Row, Card, Table, Col, Image, } from 'react-bootstrap'
+import { Container, Row, Card, Table, Col, Image, Modal } from 'react-bootstrap'
 import { } from 'react-bootstrap/esm/PageItem'
 import Backtothefuture from "./XDDD/Img/Backtothefuture-1.webp";
 
