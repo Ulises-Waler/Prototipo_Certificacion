@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Certificacion_backend } from 'declarations/Certificacion_backend';
 import { Container, Row, Card, Table, Col, Image, } from 'react-bootstrap'
 import { } from 'react-bootstrap/esm/PageItem'
+import Backtothefuture from "./XDDD/Img/Backtothefuture-1.webp";
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
             <Card.Title>Listado de Carros</Card.Title>
             <Table>
               <thead>
-                <Image src="Certificacion_frontend/public/Backtothefuture-1.webp/100px250" fluid />;
+                <img src={Backtothefuture}/>
                 <tr>
                   <th>ID</th>
                   <th>Nombre</th>
