@@ -14,7 +14,15 @@ const router = createBrowserRouter([
     path: "/",
     element: <App></App>
   },
+
+  {
+    path: "/Add",
+    element: <Create></Create>
+  },
+
 ]);
+
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
