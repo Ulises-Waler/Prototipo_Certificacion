@@ -66,7 +66,7 @@ const Create = (
         Certificacion_backend.updateCarro(BigInt(id), name, BigInt(speed), description,).then(carro => {
             Swal.fire({
                 icon: "success",
-                title: "yep",
+                title: "Yessrrr",
                 showConfirmButton: false,
                 timer: 1500
                
@@ -97,7 +97,7 @@ const Create = (
                             <Row>
                                 <Col>
                                     <Form.Group className="mb-3">
-                                        <Form.Label>Anadir carro:</Form.Label>
+                                        <Form.Label>Añadir carro:</Form.Label>
                                         <Form.Control defaultValue={name} name="name" onChange={onChangeName} type="text" placeholder="Ingresa el nombre" />
                                     </Form.Group>
                                 </Col>
@@ -105,7 +105,7 @@ const Create = (
                             <Row>
                                 <Col>
                                     <Form.Group className="mb-3">
-                                        <Form.Label>Anadir descripcion:</Form.Label>
+                                        <Form.Label>Añadir descripcion:</Form.Label>
                                         <Form.Control defaultValue={description} name="description" onChange={onChangeDescription} as="textarea" placeholder="Ingresa la descripcion" />
                                     </Form.Group>
                                 </Col>
@@ -113,14 +113,14 @@ const Create = (
                             <Row>
                                 <Col>
                                     <Form.Group className="mb-3">
-                                        <Form.Label>Ingresa la vel. maxima:</Form.Label>
+                                        <Form.Label>Ingresa la velocidad máxima:</Form.Label>
                                         <Form.Control name="speed" defaultValue={speed} onChange={onChangeSpeed} type="number" placeholder="Ingresa la velocidad maxima" />
                                     </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <Button variant="primary" onClick={isEditable ? updateCarro : createCarro}>
+                                    <Button variant="primary" onClick={isEditable ? updateCarro : updateCarro}>
                                         {isEditable ? "Editar" : "Guardar"}
                                     </Button>
                                 </Col>

@@ -55,11 +55,11 @@ function App() {
           <Card.Body>
             <Row className='m-5'>
               <Col>
-                <Card.Title>Vehiculo mas vendido</Card.Title>
+                <Card.Title>Vehículo Más Vndido</Card.Title>
                 <Image src={Backtothefuture} fluid />
               </Col>
               <Col>
-                <Button variant="dark" onClick={() => navigate('/Add')}>Agregar carro</Button>
+                <Button variant="dark" onClick={() => navigate('/Add')}>Agregar Vehículo</Button>
               </Col>
             </Row>
             <Table striped bordered hover>
