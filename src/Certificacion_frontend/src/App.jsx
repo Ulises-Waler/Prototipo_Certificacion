@@ -55,7 +55,7 @@ function App() {
           <Card.Body>
             <Row className='m-5'>
               <Col>
-                <Card.Title>Vehículo Más Vndido</Card.Title>
+                <Card.Title>Vehículo Más Vendido</Card.Title>
                 <Image src={Backtothefuture} fluid />
               </Col>
               <Col>
