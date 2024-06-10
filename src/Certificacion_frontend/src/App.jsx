@@ -110,7 +110,7 @@ id={Number(carro.id)}
 pName= {carro.name}
 pDescription={carro.description}
 pSpeed={Number(carro.speed)}
-isEditble={true}
+isEditable={true}
 getCarros={getCarros}
 setShow={setShow}
 />

@@ -15,11 +15,13 @@ const Create = (
         isEditable = null,
         getCarros = null,
         setShow = null
+        
     }
 ) => {
     const [name, setName] = useState(pName ? pName : "");
     const [description, setDescription] = useState(pDescription ? pDescription : "");
     const [speed, setSpeed] = useState(pSpeed ? pSpeed : 0);
+
 
     const navigate = useNavigate()
 
@@ -120,7 +122,7 @@ const Create = (
                             </Row>
                             <Row>
                                 <Col>
-                                    <Button variant="primary" onClick={isEditable ? updateCarro : updateCarro}>
+                                    <Button variant="primary" onClick={isEditable ? updateCarro : createCarro}>
                                         {isEditable ? "Editar" : "Guardar"}
                                     </Button>
                                 </Col>
