@@ -14,7 +14,7 @@ const Create = (
         pSpeed = null,
         isEditable = null,
         getCarros = null,
-        setShow = null,
+        setShow = null
     }
 ) => {
     const [name, setName] = useState(pName ? pName : "");
@@ -24,21 +24,21 @@ const Create = (
     const navigate = useNavigate()
 
     const onChangeName = (e) => {
-        e.preventDefault()
-        const preName = e.target.value
-        setName(preName)
+        e.preventDefault();
+        const preName = e.target.value;
+        setName(preName);
     }
 
     const onChangeDescription = (e) => {
-        e.preventDefault()
-        const preDescription = e.target.value
-        setDescription(preDescription)
+        e.preventDefault();
+        const preDescription = e.target.value;
+        setDescription(preDescription);
     }
 
     const onChangeSpeed = (e) => {
-        e.preventDefault()
-        const preSpeed = e.target.value
-        setSpeed(preSpeed)
+        e.preventDefault();
+        const preSpeed = e.target.value;
+        setSpeed(preSpeed);
     }
 
     function createCarro() {
@@ -55,32 +55,35 @@ const Create = (
             Swal.fire({
                 icon: "Error",
                 title: "Ocurrio un error",
-            })
+            });
             console.log("Error al cargar", err)
         })
     }
 
     function updateCarro() {
         Swal.fire("Actualizando")
-        Swal.showLoading()
+        Swal.showLoading();
         Certificacion_backend.updateCarro(BigInt(id), name, BigInt(speed), description,).then(carro => {
             Swal.fire({
                 icon: "success",
                 title: "yep",
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 1500
+               
             }).then(() => {
                 setShow(false);
                 getCarros();
-            })
+        })
         }).catch((err) => {
             Swal.fire({
                 icon: "Error",
                 title: "Ocurrio un error",
-            })
+            });
             console.log("Error al cargar", err)
         })
     }
+
+
 
     
 

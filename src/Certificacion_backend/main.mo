@@ -62,7 +62,7 @@ actor CarroList {
   };
 
   public func deleteCarro(id : Nat) : async Bool {
-    let carro = Array.find<Carro>(carros, func(carro) { carro.id != id });
+    let carro = Array.find<Carro>(carros, func(carro) { carro.id == id });
     if (carro != null) {
       carros := Array.filter<Carro>(carros, func(carro) { carro.id != id });
       return true;

@@ -38,15 +38,15 @@ function App() {
       Swal.close()
       setShow(true)
     });
-  };
+  }
 
   function deleteCarro(id) {
     Swal.fire("borrando");
     Swal.showLoading();
-    Certificacion_backend.deleteCarro(BingInt(id)).then(() => { getCarros();
+    Certificacion_backend.deleteCarro(BigInt(id)).then(() => { getCarros();
 
      });
-};
+}
 
   return (
     <Container>
