@@ -15,7 +15,7 @@ actor CarroList {
     {
       id = 1;
       name = "Delorean";
-      description = "Automovil que se utiliza en la trilogía de Volver al Futuro";
+      description = "Auto que aparece en volver al futuro";
       speed = 180;
     }
   ];
@@ -44,7 +44,7 @@ actor CarroList {
   };
 
   public func updateCarro(id : Nat, name : Text, speed : Nat, description : Text) : async Bool {
-    let carroToUpdate = Array.find<Carro>(carros, func(task) { task.id == id });
+    let carroToUpdate = Array.find<Carro>(carros, func(carro) { carro.id == id });
 
     switch (carroToUpdate) {
       case (null) { return false };
@@ -62,9 +62,9 @@ actor CarroList {
   };
 
   public func deleteCarro(id : Nat) : async Bool {
-    let carro = Array.find<Carro>(carros, func(task) { task.id != id });
+    let carro = Array.find<Carro>(carros, func(carro) { carro.id != id });
     if (carro != null) {
-      carros := Array.filter<Carro>(carros, func(task) { task.id != id });
+      carros := Array.filter<Carro>(carros, func(carro) { carro.id != id });
       return true;
     } else {
       return false;

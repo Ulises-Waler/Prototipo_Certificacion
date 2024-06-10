@@ -6,21 +6,20 @@ import { Certificacion_backend } from 'declarations/Certificacion_backend';
 import { useNavigate } from 'react-router-dom';
 
 
-const Create = () => (
-  {  id= null,
-    cName= null,
-    cDescription= null,
-    cSpeed= null,
-    isEditable= null, 
-    getCarros= null,
-    setShow= null
-  }
+const Create = (
+    {
+        id = null,
+        pName = null,
+        pDescription = null,
+        pSpeed = null,
+        isEditable = null,
+        getCarros = null,
+        setShow = null,
+    }
 ) => {
-
-
-    const [name, setName] = useState(cName ? cName:"");
-    const [description, setDescription] = useState(cDescription ? cDescription:"");
-    const [speed, setSpeed] = useState(cpSpeed ? cSpeed : 0 );
+    const [name, setName] = useState(pName ? pName : "");
+    const [description, setDescription] = useState(pDescription ? pDescription : "");
+    const [speed, setSpeed] = useState(pSpeed ? pSpeed : 0);
 
     const navigate = useNavigate()
 
@@ -42,40 +41,55 @@ const Create = () => (
         setSpeed(preSpeed)
     }
 
-    function updateCarro() {
-        Swal.fire("Actualizando...")
+    function createCarro() {
+        Swal.fire("cargando")
         Swal.showLoading()
-        Certificacion_backend.updateCarro(BigInt(id), BigInt(speed), description, name).then(carro => {
+        Certificacion_backend.addCarro(BigInt(speed), description, name).then(carro => {
             Swal.fire({
                 icon: "success",
-                title: "¡Se guardo exitosamente!",
+                title: "Se guardo",
+                showConfirmButton: false,
+                timer: 1500,
+            }).then(() => navigate('/'))
+        }).catch((err) => {
+            Swal.fire({
+                icon: "Error",
+                title: "Ocurrio un error",
+            })
+            console.log("Error al cargar", err)
+        })
+    }
+
+    function updateCarro() {
+        Swal.fire("Actualizando")
+        Swal.showLoading()
+        Certificacion_backend.updateCarro(BigInt(id), name, BigInt(speed), description,).then(carro => {
+            Swal.fire({
+                icon: "success",
+                title: "yep",
                 showConfirmButton: false,
                 timer: 1500,
             }).then(() => {
-                    setShow(false);
-                    getCarros();
+                setShow(false);
+                getCarros();
             })
         }).catch((err) => {
             Swal.fire({
                 icon: "Error",
-                title: "¡Lo siento ocurrio un error!",
+                title: "Ocurrio un error",
             })
-            console.log("Error al cargar.", err)
+            console.log("Error al cargar", err)
         })
     }
 
-    console.log("Valor del componente Editar", id)
-    console.log("Valor del componente a Editar",cName )
-    console.log("Valor del componente a Editar",cDescription)
-    console.log("Valor del componente a Editar",cSpeed)
-    console.log("Valor del componente a Editar",isEditable)  
+    
 
     return (
         <Container className='m-5'>
             <Row className='m-5'>
                 <Card>
                     <Card.Body>
-                        <Card.Title>{isEditable ? "Editar" : "Agregar"} carro</Card.Title>
+                        <Card.Title>{isEditable ? "Editar" : "Agregar"}</Card.Title>
                         <Form>
                             <Row>
                                 <Col>
@@ -97,15 +111,14 @@ const Create = () => (
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Ingresa la vel. maxima:</Form.Label>
-                                        <Form.Control defaultValue={speed}name="speed" onChange={onChangeSpeed} type="number" placeholder="Ingresa la velocidad maxima" />
+                                        <Form.Control name="speed" defaultValue={speed} onChange={onChangeSpeed} type="number" placeholder="Ingresa la velocidad maxima" />
                                     </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <Button variant="primary" onClick={isEditable ? updateCarro() : createCarr} >
-                                        {isEditable ? "Editar" : "Guardar"} carro
-                                        Guardar carta
+                                    <Button variant="primary" onClick={isEditable ? updateCarro : createCarro}>
+                                        {isEditable ? "Editar" : "Guardar"}
                                     </Button>
                                 </Col>
                             </Row>
@@ -113,9 +126,9 @@ const Create = () => (
                     </Card.Body>
                 </Card>
             </Row>
-
         </Container>
     );
 }
+
 
 export default Create;

@@ -1,87 +1,92 @@
 import { useEffect, useState } from 'react';
 import { Certificacion_backend } from 'declarations/Certificacion_backend';
-import { Form, Button, Container, Row, Card, Table, Col, Image, ModalBody, Modal } from 'react-bootstrap'
+import { Form, Button, Container, Row, Card, Table, Col, Image, ModalBody, Modal, Carousel } from 'react-bootstrap'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { } from 'react-bootstrap/esm/PageItem'
 import Backtothefuture from "./XDDD/Img/Backtothefuture-1.webp";
 import Create from './Create';
 
-function App() {
-  const [Carros, setCarros] = useState([]);
-  const [carro, setCarro] = useState({});
-  const [show, setShow] = useState(false);
-  const navigate = useNavigate();
 
+
+
+
+
+function App() {
+  const [carros, setCarros] = useState([])
+  const [carro, setCarro] = useState({})
+  const[show,setShow]= useState (false)
+  const navigate = useNavigate()
   useEffect(() => {
     getCarros();
   }, []);
 
   function getCarros() {
-    Swal.fire("Cargando")
-    Swal.showLoading()
+    Swal.fire("cargando");
+    Swal.showLoading();
     Certificacion_backend.getAllCarros().then(carros => {
-      setCarros(carros.shift());
+      setCarros(carros);
+      Swal.close()
+    });
+  };
+
+  function getCarro(id) {
+    Swal.fire("cargando");
+    Swal.showLoading();
+    Certificacion_backend.getCarroById(BigInt(id)).then(carro => {
+      setCarro(carro.shift());
       Swal.close()
       setShow(true)
     });
+  };
 
-    function deleteCarro(id) {
-      Swal.fire("Se esta removiendo el carro...")
-      Swal.showLoading()
+  function deleteCarro(id) {
+    Swal.fire("borrando");
+    Swal.showLoading();
+    Certificacion_backend.deleteCarro(BingInt(id)).then(() => { getCarros();
 
-      Certificacion_backend.deleteCarro(BigInt(id)).then(() => {
-        getCarros();
-      });
-    }
-  }
-
-
+     });
+};
 
   return (
-
-    <center><Container className='m-4'>
+    <Container>
       <Row className='m-5'>
         <Card>
           <Card.Body>
             <Row className='m-5'>
               <Col>
-                <Card.Title>Auto Más Popular</Card.Title>
+                <Card.Title>Vehiculo mas vendido</Card.Title>
                 <Image src={Backtothefuture} fluid />
               </Col>
               <Col>
-                <Button variant="dark" onClick={() => navigate('/añadir_carro')}>Add car</Button>
+                <Button variant="dark" onClick={() => navigate('/Add')}>Agregar carro</Button>
               </Col>
             </Row>
             <Table striped bordered hover>
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
-                  <th>MAXVelocidad</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>MAX Speed</th>
+                  <th>Opciones</th>
                 </tr>
               </thead>
               <tbody>
-
                 {
-                  Carros.length > 0 ?
-                    Carros.map((Carro) => (
+                  carros.length > 0 ?
+                    carros.map((carro) => (
                       <tr>
-                        <td>{Number(Carro.id)}</td>
-                        <td>{Carro.name}</td>
-                        <td>{Carro.description}</td>
-                        <td>(Number{Carro.speed})</td>
+                        <td>{Number(carro.id)}</td>
+                        <td>{carro.name}</td>
+                        <td>{carro.description}</td>
+                        <td>{Number(carro.speed)}</td>
                         <td>
                           <Row>
-                            <col>
-                              <button variant="Info" onClick={() => getCarro(Number(carro.id))}>Editar
-                              </button>
-                            </col>
-                            <col>
-                              <Button variant="Danger" onClick={() => deleteCarro(Number(carro.id))}>Eliminar
-                              </Button>
-                            </col>
+                            <Col><Button variant="info" onClick={() => getCarro(Number(carro.id))}>Actualizar</Button>
+                            </Col>
+                            <Col><Button variant="danger" onClick={()=>deleteCarro(Number(carro.id))}>Eliminar</Button>
+                            </Col>
                           </Row>
                         </td>
                       </tr>
@@ -94,27 +99,24 @@ function App() {
         </Card>
       </Row>
 
-      <Modal show={show}>
-        <Modal.Header closeButton>
-          <Modal.Title>Editar Carro</Modal.Title>
-        </Modal.Header>
-      </Modal>
-      <ModalBody>
-        <Create
-          id={Number(carro.id)}
-          cName={carro.name}
-          cDescription={carro.tilte}
-          cSpeed={Number(carro.speed)}
-          isEditable={true}
-          getCarros={getCarros}
-          setShow={setShow}
-        />
+<Modal show={show}>
+  <Modal.Header closeButton > 
+<Modal.Title> Editar carro </Modal.Title>
 
-      </ModalBody>
-
-
-    </Container></center>
+  </Modal.Header>
+<Modal.Body>
+<Create
+id={Number(carro.id)}
+pName= {carro.name}
+pDescription={carro.description}
+pSpeed={Number(carro.speed)}
+isEditble={true}
+getCarros={getCarros}
+setShow={setShow}
+/>
+</Modal.Body>
+</Modal>
+    </Container>
   );
 }
-
 export default App;
